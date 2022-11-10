@@ -1,0 +1,496 @@
+<!--Banner Start-->
+<section class="page-title contact_page--title" style="background-image:url('assets/images/career_banner.png');">
+  <div class="container">
+    <div class="standalone-content-data">
+      <h2 class="hide-cursor">Careers</h2>
+      <ul class="page-breadcrumb link">
+        <li>
+          <a routerLink="/">Home</a>
+        </li>
+        <li><a>Careers</a></li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+<!--Banner End-->
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div *ngIf="loadingSpinner">
+  <app-action-spinner></app-action-spinner>
+</div>
+<section class="careers">
+
+  <img src="assets/images/half_circle_icon.png" alt="" class="careers__halfcircle--icon">
+  <img src="assets/images/two_face_icon.png" alt="" class="careers__triangle2--icon">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="heading position-relative">
+          <h2 class="main-title text-center">Careers</h2>
+
+          <img src="assets/images/two_face_icon.png" alt="" class="careers__triangle--icon">
+        </div>
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6 careers__grid">
+        <h4 class="careers__grid--h4">Current openings</h4>
+        <accordion [isAnimated]="true" class="position-relative">
+          <accordion-group class="careers__title" *ngFor="let career of careers" [heading]="career.en_title">
+            <div class="row">
+              <div class="col-md-8">
+                <p class="careers__text text-white">
+                  <!-- {{ career.en_text }} -->
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequuntur at dolorem quam vitae quos eaque assumenda tenetur
+                </p>
+              </div>
+              <div class="col-md-4">
+                <a [routerLink]="['/careers/', career.id]" class="btn btn-submit">Know more</a>
+              </div>
+            </div>
+          </accordion-group>
+          <img src="assets/images/close_icon.png" alt="" class="careers__close--icon">
+
+        </accordion>
+
+      </div>
+      <div class="col-md-6 careers__grid">
+        <img src="assets/images/whole_curcle_icon.png" alt="" class="careers__circle--icon">
+
+        <h4 class="careers__grid--h4">apply for a position</h4>
+        <p class="careers__grid--paragraph">please complete the form below to apply for a position</p>
+        <form [formGroup]="careerForm" class="careers__form" (ngSubmit)="onSubmit(careerForm)">
+
+
+              <div class="form-group form__input">
+                <input id="name" [ngClass]="{'border-danger': careerForm.controls['name'].touched && careerForm.controls['name'].errors != null}" class="form-control" type="text" formControlName="name" name="name" placeholder="Your name">
+
+                <ng-container
+                *ngIf="careerForm.controls['name'].touched && careerForm.controls['name'].errors != null">
+
+                <button *ngIf="careerForm.controls['name'].errors['required']" type="button"
+                popover="Name is required" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                <button *ngIf="careerForm.controls['name'].errors['minlength']" type="button"
+                popover="Name must be at least 3 charachters" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                <button *ngIf="careerForm.controls['name'].errors['pattern']" type="button"
+                popover="Name must be charachters only" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+
+
+                </ng-container>
+
+
+              </div>
+
+              <div class="form-group form__input ">
+                <input id="phone" [ngClass]="{'border-danger': careerForm.controls['phone'].touched && careerForm.controls['phone'].errors != null}" min="1" class="form-control" type="number" name="phone" formControlName="phone" placeholder="Your phone">
+
+                <ng-container
+                *ngIf="careerForm.controls['phone'].touched && careerForm.controls['phone'].errors != null">
+
+                <button *ngIf="careerForm.controls['phone'].errors['required']" type="button"
+                popover="Phone is required" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                <button *ngIf="careerForm.controls['phone'].errors['pattern']" type="button"
+                popover="Phone is not valid" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+
+
+                </ng-container>
+
+              </div>
+              <div class="form__input form-group">
+                <!-- <label for="email">Email address</label> -->
+
+                <input type="email" class="form-control" [ngClass]="{'border-danger': careerForm.controls['email'].touched && careerForm.controls['email'].errors != null}" id="email" formControlName='email' name="email" placeholder="Email address">
+
+                <ng-container
+                *ngIf="careerForm.controls['email'].touched && careerForm.controls['email'].errors != null">
+
+                <button *ngIf="careerForm.controls['email'].errors['required']" type="button"
+                  popover="Email is required" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                <button *ngIf="careerForm.controls['email'].errors['email']" type="button"
+                  popover="Email is invalid" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                  <button *ngIf="careerForm.controls['email'].errors['pattern']" type="button"
+                  popover="Email is invalid" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+              </ng-container>
+              </div>
+              <div class="form-group form__input">
+
+                <input type="text" class="form-control" [ngClass]="{'border-danger': careerForm.controls['position'].touched && careerForm.controls['position'].errors != null}" id="position" formControlName='position' name="position" placeholder="typing a position">
+
+                <div  *ngIf="careerForm.controls['position'].touched && careerForm.controls['position'].errors != null">
+                  <button class="btn-danger validation" type="button" id="basic-addon2" *ngIf="careerForm.controls['position'].errors['required']" data-toggle="tooltip" popover="Email is required" placement="right">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group form__input input-group">
+                <!-- <input id="file" class="form-control" type="text" name="file" formControlName="file" [ngClass]="{'border-danger': careerForm.controls['file'].touched && careerForm.controls['file'].errors != null}" placeholder="File"> -->
+
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input form-control" id="inputGroupFile01" (change)="file($event)"   aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+                <div  *ngIf="careerForm.controls['file'].touched && careerForm.controls['file'].errors != null">
+                  <button class="btn-danger validation" type="button" id="basic-addon2" *ngIf="careerForm.controls['file'].errors['required']" data-toggle="tooltip" popover="file is required" placement="right" >
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group form__input ">
+
+                <input id="experience" class="form-control" type="text" name="experience" formControlName="experience" [ngClass]="{'border-danger': careerForm.controls['experience'].touched && careerForm.controls['experience'].errors != null}" placeholder="Experience">
+
+                <div  *ngIf="careerForm.controls['experience'].touched && careerForm.controls['experience'].errors != null">
+                  <button  class="btn-danger validation"  type="button" id="basic-addon2" *ngIf="careerForm.controls['experience'].errors['required']" data-toggle="tooltip" placement="right" popover="File is required">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group form__input ">
+                <textarea id="cover_letter" class="form-control" [ngClass]="{'border-danger': careerForm.controls['cover_letter'].touched && careerForm.controls['cover_letter'].errors != null}" type="text" name="cover_letter" formControlName="cover_letter" rows="6" placeholder="Cover letter"></textarea>
+
+                <div *ngIf="careerForm.controls['cover_letter'].touched && careerForm.controls['cover_letter'].errors != null">
+                  <button class="btn-danger validation" type="button" id="basic-addon2" *ngIf="careerForm.controls['cover_letter'].errors['required']" data-toggle="tooltip" placement="right" popover="Cover letter is required">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <button class="btn btn-submit" [disabled]="!careerForm.valid">Submit position</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact section start
+<ng-container *ngIf="!thankyou">
+
+  <section class="contact-sec contact padding-top padding-bottom"id="contact-sec">
+    <div class="text-center">
+      <h4 class="heading main-title" data-depth="0.1">Our Contacts</h4>
+      <h6>Get in touch</h6>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card contact__card bg-black">
+            <div class="card-body">
+              <img src="assets/images/mobile_contact.png" alt="">
+              <p><a href="tel:+2 - 01021551322">+2 - 01021551322
+              </a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card contact__card bg-black">
+            <div class="card-body">
+              <img src="assets/images/pin_contact.png" alt="">
+              <p><a href="mailto:Bonder@digitalbondmena.com
+              ">Bonder@digitalbondmena.com
+
+              </a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card contact__card bg-black">
+            <div class="card-body">
+              <img src="assets/images/message_contact.png" alt="">
+              <p><a href="https://goo.gl/maps/fYEmnR9zhXrGtFT48">11 Dr El-Sebaey , Ad Dokki ,
+                Giza Governorate
+
+              </a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+          <div class="contact-social-icons d-flex justify-content-center align-items-center pt-5">
+            <ul class="upper-social-icons">
+              <li><a target="_blank" href="https://www.instagram.com/digitalbondmena/" class="instagrams-text-hvr"><i class="lni lni-instagram"></i></a> digitalbondmena</li>
+                <li><a target="_blank" href="https://www.facebook.com/DigitalBondMena/" class="facebook-text-hvr"><i class="fab fa-facebook-f"></i></a> digitalbondmena</li>
+                <li><a target="_blank" href="https://www.linkedin.com/company/digital-bond/" class="linkedin-text-hvr"><i class="fab fa-linkedin-in"></i></a> digitalbondmena</li>
+                <li><a target="_blank" href="https://api.whatsapp.com/send?phone=2001021551322&text=" class="linkedin-text-hvr"><i class="fab fa-whatsapp"></i></a> digitalbondmena</li>
+
+            </ul>
+
+          </div>
+
+    </div>
+    <!-- <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-lg-5 text-center text-lg-left position-relative">
+                <div class="contact-details bg-gray p-5 wow fadeInLeft">
+                    <ul>
+                        <li><i class="fas fa-map-pin text-primary"></i><a href="https://goo.gl/maps/4MFFx6BBxAEw3dug6">11 Al Israa street, El Mohandseen, Giza Governorate, Egypt
+
+                        </a></li>
+                        <li><i class="fa fa-phone-volume text-primary"></i>
+                        <span><a href="tel:01021551322">+20 01021551322</a>
+                        </span>
+                        </li>
+                        <li><i class="fa fa-at text-primary"></i><a href="mailto:bonder@digitalbondmena.com">Bonder@digitalbondmena.com</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-7">
+              <div class="bg-gray p-5 wow fadeInRight">
+
+                <h4 class="heading text-center main-title text-lg-left ">Send A Message</h4>
+                <form [formGroup]="careerForm" (ngSubmit)="onSubmit(careerForm)">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group form-group">
+                        <label for="name">Name</label>
+                        <input id="name" [ngClass]="{'border-danger': careerForm.controls['name'].touched && careerForm.controls['name'].errors != null}" class="form-control" type="text" formControlName="name" name="name">
+
+                        <div class="input-group-append" *ngIf="careerForm.controls['name'].touched && careerForm.controls['name'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['name'].errors['required']" data-toggle="tooltip" title="Name is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+
+
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group input-group">
+                        <label for="phone">Phone number</label>
+                        <input id="phone" [ngClass]="{'border-danger': careerForm.controls['phone'].touched && careerForm.controls['phone'].errors != null}" min="1" class="form-control" type="number" name="phone" formControlName="phone">
+
+                        <div class="input-group-append" *ngIf="careerForm.controls['phone'].touched && careerForm.controls['phone'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['phone'].errors['required']" data-toggle="tooltip" title="Phone is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['phone'].errors['pattern']" data-toggle="tooltip" title="Phone is minimum 11 digits">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group form-group">
+                        <label for="email">Email address</label>
+
+                        <input type="email" class="form-control" [ngClass]="{'border-danger': careerForm.controls['email'].touched && careerForm.controls['email'].errors != null}" id="email" formControlName='email' name="email">
+
+                        <div class="input-group-append" *ngIf="careerForm.controls['email'].touched && careerForm.controls['email'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['email'].errors['required']" data-toggle="tooltip" title="Email is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['email'].errors['email']" data-toggle="tooltip" title="Email is invalid">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group input-group">
+                        <label for="subject">Position</label>
+                        <input id="subject" class="form-control" type="text" name="subject" formControlName="subject" [ngClass]="{'border-danger': careerForm.controls['subject'].touched && careerForm.controls['subject'].errors != null}">
+
+                        <div class="input-group-append" *ngIf="careerForm.controls['subject'].touched && careerForm.controls['subject'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['subject'].errors['required']" data-toggle="tooltip" title="Position is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group input-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" [ngClass]="{'border-danger': careerForm.controls['message'].touched && careerForm.controls['message'].errors != null}" type="text" name="message" formControlName="message" rows="6"></textarea>
+
+                        <div class="input-group-append" *ngIf="careerForm.controls['message'].touched && careerForm.controls['message'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['message'].errors['required']" data-toggle="tooltip" title="Message is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-dark" [disabled]="!careerForm.valid">Submit Message</button>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="contact__form">
+    <div class="container">
+
+    <div class="p-5 wow fadeInRight">
+
+      <h4 class="heading text-center main-title">Let's talk</h4>
+      <div class="row">
+        <div class="col-12">
+          <div class="tracks">
+
+            <div class="track-area">
+
+                <div class="track-main">
+                    <div class="track">
+                        <div class="step step1 active">
+                            <span class="icon">1</span>
+                            <span class="text">Personal Information   </span>
+                        </div>
+                        <div class="step step2">
+                            <span class="icon">2</span>
+                            <span class="text">Leave message  </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+      <form class="mt-4" [formGroup]="careerForm" (ngSubmit)="onSubmit(careerForm)" *ngIf="!formStatus">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="input-group form-group">
+              <input id="name" [ngClass]="{'border-danger': careerForm.controls['name'].touched && careerForm.controls['name'].errors != null}" class="form-control" type="text" formControlName="name" name="name" placeholder="Name">
+
+              <div class="input-group-append" *ngIf="careerForm.controls['name'].touched && careerForm.controls['name'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['name'].errors['required']" data-toggle="tooltip" title="Name is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group input-group">
+              <input id="phone" [ngClass]="{'border-danger': careerForm.controls['phone'].touched && careerForm.controls['phone'].errors != null}" min="1" class="form-control" type="number" placeholder="Phone number" name="phone" formControlName="phone">
+
+              <div class="input-group-append" *ngIf="careerForm.controls['phone'].touched && careerForm.controls['phone'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['phone'].errors['required']" data-toggle="tooltip" title="Phone is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['phone'].errors['pattern']" data-toggle="tooltip" title="Phone is minimum 11 digits">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="input-group form-group">
+
+              <input type="email" class="form-control" [ngClass]="{'border-danger': careerForm.controls['email'].touched && careerForm.controls['email'].errors != null}" id="email" formControlName='email' name="email" placeholder="Email address">
+
+              <div class="input-group-append" *ngIf="careerForm.controls['email'].touched && careerForm.controls['email'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['email'].errors['required']" data-toggle="tooltip" title="Email is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['email'].errors['email']" data-toggle="tooltip" title="Email is invalid">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group input-group">
+              <input id="subject" class="form-control" type="text" name="subject" formControlName="subject" [ngClass]="{'border-danger': careerForm.controls['subject'].touched && careerForm.controls['subject'].errors != null}" placeholder="Position">
+
+              <div class="input-group-append" *ngIf="careerForm.controls['subject'].touched && careerForm.controls['subject'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerForm.controls['subject'].errors['required']" data-toggle="tooltip" title="Position is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12">
+            <button class="btn btn-dark" [disabled]="!careerForm.valid">Next</button>
+          </div>
+
+        </div>
+      </form>
+      <form class="mt-4" [formGroup]="careerFormNext" (ngSubmit)="onSubmitNext(careerFormNext)" *ngIf="formStatus">
+
+        <div class="row">
+
+
+          <div class="col-md-12">
+            <div class="form-group input-group">
+              <textarea id="message" class="form-control" [ngClass]="{'border-danger': careerFormNext.controls['message'].touched && careerFormNext.controls['message'].errors != null}" placeholder="Message" type="text" name="message" formControlName="message" rows="6"></textarea >
+
+              <div class="input-group-append" *ngIf="careerFormNext.controls['message'].touched && careerFormNext.controls['message'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="careerFormNext.controls['message'].errors['required']" data-toggle="tooltip" title="Message is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-dark" [disabled]="!careerForm.valid">Submit Message</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+</div>
+
+  </section>
+</ng-container>-->
+
+<!--Contact section end-->
+<ng-container *ngIf="thankyou">
+  <section >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="thankyou_contact">
+            <div class="thankyou_contact_card">
+
+              <span class="text-success message-i"><i class="fa fa-envelope-open fa-3x"></i></span>
+              <h4 >Thank you for contacting us</h4>
+              <span class="message">Your Message Has Been Received And We Will Get In Touch With You Soon!
+              </span>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <a routerLink="/" class="btn btn-primary">
+                    <span>Back to home</span>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+              <path fill="#290707" fill-opacity="1" d="M0,224L24,192C48,160,96,96,144,101.3C192,107,240,181,288,197.3C336,213,384,171,432,176C480,181,528,235,576,245.3C624,256,672,224,720,192C768,160,816,128,864,117.3C912,107,960,117,1008,154.7C1056,192,1104,256,1152,256C1200,256,1248,192,1296,138.7C1344,85,1392,43,1416,21.3L1440,0L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

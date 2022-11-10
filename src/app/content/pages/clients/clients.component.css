@@ -1,0 +1,6 @@
+.transitionCaseStudyCard {
+  -webkit-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+  transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+  opacity: 1;
+}
+/*# sourceMappingURL=clients.component.css.map */

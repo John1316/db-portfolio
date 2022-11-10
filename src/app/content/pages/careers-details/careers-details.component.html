@@ -1,0 +1,271 @@
+<!--Banner Start-->
+<section class="page-title contact_page--title" style="background-image:url('assets/images/career_banner.png');">
+  <div class="container">
+    <div class="standalone-content-data">
+      <h2 class="hide-cursor">Careers</h2>
+      <ul class="page-breadcrumb link">
+        <li>
+          <a routerLink="/">Home</a>
+        </li>
+        <li><a>Careers</a></li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+<!--Banner End-->
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div *ngIf="loadingSpinner">
+  <app-action-spinner></app-action-spinner>
+</div>
+
+<section class="job">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+
+        <div class="card job__card  mb-3">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="job__card--h2">Job
+                <!-- --> Details</h2>
+
+            </div>
+            <div class="col-md-8 card-body job__card--details">
+
+              <div class="css-rcl8e5">
+                <span class="job__card--title">Job title:</span>
+                <span class="job__card--title-answer"><span class="css-4xky9y">{{jobDetails?.en_job_desc_title}}</span></span>
+              </div>
+              <div class="css-rcl8e5">
+                <span class="job__card--title">Experience Needed:</span>
+                <span class="job__card--title-answer"><span class="css-4xky9y">5 to 8 years</span></span>
+              </div>
+              <div class="css-rcl8e5">
+                <span class="job__card--title">Job Description:</span>
+                <span class="job__card--title-answer"><span class="css-4xky9y">
+                  {{jobDetails?.en_job_desc_text}}
+                </span></span>
+              </div>
+
+
+
+            </div>
+            <div class="col-md-4">
+              <div class="btn_section">
+                <button class="btn btn-submit" (click)="scrollToElement()">Apply to this job</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="job__card card mb-3">
+          <div class="card-body job__card--decription">
+
+            <h2  class="job__card--h2">Job Description</h2>
+            <div class="css-1uobp1k">
+              <ul>
+                <li>Maximizes the marketing potential for assigned products by achieving sales &amp; market share
+                  objectives through effective marketing, operational planning implementation and management of
+                  resources.</li>
+                <li>Develops annual marketing plan based on identified critical success factors (CSF) that outlines key
+                  activities and marketing programs to address the CSFs and implements approved strategies through Sales
+                  team within agreed budget for his assigned product-lines.</li>
+                <li>Drive portfolio management activities while always aiming at optimizing the return on current and
+                  future assets</li>
+                <li>Arrange innovative marketing mix for his assigned product</li>
+                <li>Plan &amp; coordinate all activities pertaining to launch of new products and continue close
+                  follow-up on post launch performance and activities.</li>
+                <li>Keep himself and sales team up to date on medical knowledge and product knowledge as related to the
+                  therapeutic area and competition.</li>
+                <li>Control / Ensure the profitability of his Product Lines</li>
+                <li>Proceed to episodic and punctual qualitative field visit.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="job__card card mb-3">
+          <div class="card-body job__card--requirements">
+
+            <h2  class="job__card--h2">Job Requirements</h2>
+            <div class="css-1uobp1k">
+              <ul>
+                <li>Maximizes the marketing potential for assigned products by achieving sales &amp; market share
+                  objectives through effective marketing, operational planning implementation and management of
+                  resources.</li>
+                <li>Develops annual marketing plan based on identified critical success factors (CSF) that outlines key
+                  activities and marketing programs to address the CSFs and implements approved strategies through Sales
+                  team within agreed budget for his assigned product-lines.</li>
+                <li>Drive portfolio management activities while always aiming at optimizing the return on current and
+                  future assets</li>
+                <li>Arrange innovative marketing mix for his assigned product</li>
+                <li>Plan &amp; coordinate all activities pertaining to launch of new products and continue close
+                  follow-up on post launch performance and activities.</li>
+                <li>Keep himself and sales team up to date on medical knowledge and product knowledge as related to the
+                  therapeutic area and competition.</li>
+                <li>Control / Ensure the profitability of his Product Lines</li>
+                <li>Proceed to episodic and punctual qualitative field visit.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card job__card mb-4">
+          <div class="card-body">
+            <h2 class="job__card--h2">Similar Jobs</h2>
+            <ul>
+              <li *ngFor="let otherCategory of otherCategories">
+                <a [routerLink]="['/careers',  otherCategory.id ]" >{{ otherCategory.en_job_desc_title }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card job__card mb-4">
+          <div class="card-body">
+            <h2 class="job__card--h2">Explore More</h2>
+            <ul>
+              <li *ngFor="let anotherCategory of anotherCategories">
+                <a [routerLink]="['/careers',  anotherCategory.id ]" >{{ anotherCategory.en_job_desc_title }}</a>
+              </li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="job__card">
+          <form id="submitForm" [formGroup]="careerForm" class="careers__form" (ngSubmit)="onSubmit(careerForm)">
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group form__input">
+                  <input id="name" [ngClass]="{'border-danger': careerForm.controls['name'].touched && careerForm.controls['name'].errors != null}" class="form-control" type="text" formControlName="name" name="name" placeholder="Your name">
+
+                  <ng-container
+                  *ngIf="careerForm.controls['name'].touched && careerForm.controls['name'].errors != null">
+
+                  <button *ngIf="careerForm.controls['name'].errors['required']" type="button"
+                  popover="Name is required" placement="right"
+                    class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                  <button *ngIf="careerForm.controls['name'].errors['minlength']" type="button"
+                  popover="Name must be at least 3 charachters" placement="right"
+                    class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                  <button *ngIf="careerForm.controls['name'].errors['pattern']" type="button"
+                  popover="Name must be charachters only" placement="right"
+                    class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+
+
+                  </ng-container>
+
+
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <div class="form-group form__input ">
+                  <input id="phone" [ngClass]="{'border-danger': careerForm.controls['phone'].touched && careerForm.controls['phone'].errors != null}" min="1" class="form-control" type="number" name="phone" formControlName="phone" placeholder="Your phone">
+
+                  <ng-container
+                  *ngIf="careerForm.controls['phone'].touched && careerForm.controls['phone'].errors != null">
+
+                  <button *ngIf="careerForm.controls['phone'].errors['required']" type="button"
+                  popover="Phone is required" placement="right"
+                    class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                  <button *ngIf="careerForm.controls['phone'].errors['pattern']" type="button"
+                  popover="Phone is not valid" placement="right"
+                    class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+
+
+                  </ng-container>
+
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form__input form-group">
+                  <!-- <label for="email">Email address</label> -->
+
+                  <input type="email" class="form-control" [ngClass]="{'border-danger': careerForm.controls['email'].touched && careerForm.controls['email'].errors != null}" id="email" formControlName='email' name="email" placeholder="Email address">
+
+                  <ng-container
+                  *ngIf="careerForm.controls['email'].touched && careerForm.controls['email'].errors != null">
+
+                  <button *ngIf="careerForm.controls['email'].errors['required']" type="button"
+                    popover="Email is required" placement="right"
+                    class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                  <button *ngIf="careerForm.controls['email'].errors['email']" type="button"
+                    popover="Email is invalid" placement="right"
+                    class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                    <button *ngIf="careerForm.controls['email'].errors['pattern']" type="button"
+                    popover="Email is invalid" placement="right"
+                    class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                </ng-container>
+                </div>
+              </div>
+              <div class="col-md-6">
+
+                <div class="form-group form__input">
+
+                  <input type="text" class="form-control" [ngClass]="{'border-danger': careerForm.controls['position'].touched && careerForm.controls['position'].errors != null}" id="position" [ngModel]="jobDetails?.en_job_desc_title" readonly formControlName='position' name="position" placeholder="typing a position">
+
+                  <div  *ngIf="careerForm.controls['position'].touched && careerForm.controls['position'].errors != null">
+                    <button class="btn-danger validation" type="button" id="basic-addon2" *ngIf="careerForm.controls['position'].errors['required']" data-toggle="tooltip" popover="Email is required" placement="right">
+                      <i class="fa fa-info" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group form__input">
+
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input form-control" id="inputGroupFile01" (change)="file($event)"   aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                  </div>
+                  <div  *ngIf="careerForm.controls['file'].touched && careerForm.controls['file'].errors != null">
+                    <button class="btn-danger validation" type="button" id="basic-addon2" *ngIf="careerForm.controls['file'].errors['required']" data-toggle="tooltip" popover="file is required" placement="right" >
+                      <i class="fa fa-info" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <div class="form-group form__input ">
+
+                  <input id="experience" class="form-control" type="text" name="experience" formControlName="experience" [ngClass]="{'border-danger': careerForm.controls['experience'].touched && careerForm.controls['experience'].errors != null}" placeholder="Experience">
+
+                  <div  *ngIf="careerForm.controls['experience'].touched && careerForm.controls['experience'].errors != null">
+                    <button  class="btn-danger validation"  type="button" id="basic-addon2" *ngIf="careerForm.controls['experience'].errors['required']" data-toggle="tooltip" placement="right" popover="File is required">
+                      <i class="fa fa-info" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group form__input ">
+                  <textarea id="cover_letter" class="form-control" [ngClass]="{'border-danger': careerForm.controls['cover_letter'].touched && careerForm.controls['cover_letter'].errors != null}" type="text" name="cover_letter" formControlName="cover_letter" rows="6" placeholder="Cover letter"></textarea>
+
+                  <div *ngIf="careerForm.controls['cover_letter'].touched && careerForm.controls['cover_letter'].errors != null">
+                    <button class="btn-danger validation" type="button" id="basic-addon2" *ngIf="careerForm.controls['cover_letter'].errors['required']" data-toggle="tooltip" placement="right" popover="Cover letter is required">
+                      <i class="fa fa-info" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <button class="btn btn-submit" [disabled]="!careerForm.valid">Submit position</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

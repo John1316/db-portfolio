@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "to-navbar.component.scss"
+    ],
+    "names": [],
+    "file": "to-navbar.component.css"
+}

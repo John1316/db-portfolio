@@ -1,0 +1,402 @@
+<!--Banner Start-->
+<article>
+
+  <section class="page-title contact_page--title"  style="background-image:url('assets/images/contact_cover.png');">
+    <div class="container">
+      <div class="standalone-content-data">
+        <h2 class="hide-cursor">Contact us</h2>
+        <ul class="page-breadcrumb link">
+          <li>
+            <a routerLink="/">Home</a>
+          </li>
+          <li><a>Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+  <section class="contact-sec contact position-relative"  id="contact-sec">
+    <img src="assets/images/shadow_effect_right.png" class="contact__section--layer">
+    <img src="assets/images/close_icon.png" class="contact__section--icon">
+    <div class="row justify-content-center">
+
+      <div class="col-md-8 text-center mb-4 position-relative">
+        <h4 class="main-title" data-depth="0.1">Our Contacts</h4>
+        <h6>Get in touch</h6>
+        <img src="assets/images/two_face_icon.png" class="contact__section--icon-title">
+
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card contact__card bg-black">
+            <div class="card-body">
+              <img src="assets/images/mobile_contact.png" alt="">
+              <p><a href="tel:+2 - 01021551322">+2 - 01021551322
+              </a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card contact__card bg-black">
+            <div class="card-body">
+              <img src="assets/images/pin_contact.png" alt="">
+              <p><a href="mailto:Bonder@digitalbondmena.com
+              ">Bonder@digitalbondmena.com
+
+              </a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card contact__card bg-black">
+            <div class="card-body">
+              <img src="assets/images/message_contact.png" alt="">
+              <p><a href="https://goo.gl/maps/fYEmnR9zhXrGtFT48">11 Dr El-Sebaey , Ad Dokki ,
+                Giza Governorate
+
+              </a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <div class="contact-social-icons d-flex justify-content-center align-items-center pt-5">
+            <ul class="upper-social-icons">
+              <li><a target="_blank" href="https://www.instagram.com/digitalbondmena/" class="instagrams-text-hvr"><i class="lni lni-instagram"></i></a> digitalbondmena</li>
+                <li><a target="_blank" href="https://www.facebook.com/DigitalBondMena/" class="facebook-text-hvr"><i class="fab fa-facebook-f"></i></a> digitalbondmena</li>
+                <li><a target="_blank" href="https://www.linkedin.com/company/digital-bond/" class="linkedin-text-hvr"><i class="fab fa-linkedin-in"></i></a> digitalbondmena</li>
+                <li><a target="_blank" href="https://api.whatsapp.com/send?phone=2001021551322&text=" class="linkedin-text-hvr"><i class="fab fa-whatsapp"></i></a> digitalbondmena</li>
+                <img src="assets/images/half_circle_icon.png" class="contact-social-icon--circle">
+                <img src="assets/images/close_icon.png" class="contact-social-icon--close">
+                <!-- <li>
+                  <a  class="sidemenu_btn " id="sidemenu_toggle">
+                    <i class="lni lni-menu"></i>
+                  </a>
+              </li> -->
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-lg-5 text-center text-lg-left position-relative">
+                <div class="contact-details bg-gray p-5 wow fadeInLeft">
+                    <ul>
+                        <li><i class="fas fa-map-pin text-primary"></i><a href="https://goo.gl/maps/4MFFx6BBxAEw3dug6">11 Al Israa street, El Mohandseen, Giza Governorate, Egypt
+
+                        </a></li>
+                        <li><i class="fa fa-phone-volume text-primary"></i>
+                        <span><a href="tel:01021551322">+20 01021551322</a>
+                        </span>
+                        </li>
+                        <li><i class="fa fa-at text-primary"></i><a href="mailto:bonder@digitalbondmena.com">Bonder@digitalbondmena.com</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-7">
+              <div class="bg-gray p-5 wow fadeInRight">
+
+                <h4 class="heading text-center main-title text-lg-left ">Send A Message</h4>
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group form-group">
+                        <label for="name">Name</label>
+                        <input id="name" [ngClass]="{'border-danger': contactForm.controls['name'].touched && contactForm.controls['name'].errors != null}" class="form-control" type="text" formControlName="name" name="name">
+
+                        <div class="input-group-append" *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="contactForm.controls['name'].errors['required']" data-toggle="tooltip" title="Name is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+
+
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group input-group">
+                        <label for="phone">Phone number</label>
+                        <input id="phone" [ngClass]="{'border-danger': contactForm.controls['phone'].touched && contactForm.controls['phone'].errors != null}" min="1" class="form-control" type="number" name="phone" formControlName="phone">
+
+                        <div class="input-group-append" *ngIf="contactForm.controls['phone'].touched && contactForm.controls['phone'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="contactForm.controls['phone'].errors['required']" data-toggle="tooltip" title="Phone is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="contactForm.controls['phone'].errors['pattern']" data-toggle="tooltip" title="Phone is minimum 11 digits">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group form-group">
+                        <label for="email">Email address</label>
+
+                        <input type="email" class="form-control" [ngClass]="{'border-danger': contactForm.controls['email'].touched && contactForm.controls['email'].errors != null}" id="email" formControlName='email' name="email">
+
+                        <div class="input-group-append" *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="contactForm.controls['email'].errors['required']" data-toggle="tooltip" title="Email is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="contactForm.controls['email'].errors['email']" data-toggle="tooltip" title="Email is invalid">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group input-group">
+                        <label for="subject">Position</label>
+                        <input id="subject" class="form-control" type="text" name="subject" formControlName="subject" [ngClass]="{'border-danger': contactForm.controls['subject'].touched && contactForm.controls['subject'].errors != null}">
+
+                        <div class="input-group-append" *ngIf="contactForm.controls['subject'].touched && contactForm.controls['subject'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="contactForm.controls['subject'].errors['required']" data-toggle="tooltip" title="Position is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group input-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" [ngClass]="{'border-danger': contactForm.controls['message'].touched && contactForm.controls['message'].errors != null}" type="text" name="message" formControlName="message" rows="6"></textarea>
+
+                        <div class="input-group-append" *ngIf="contactForm.controls['message'].touched && contactForm.controls['message'].errors != null">
+                          <button class="input-group-text" type="button" id="basic-addon2" *ngIf="contactForm.controls['message'].errors['required']" data-toggle="tooltip" title="Message is required">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-dark" [disabled]="!contactForm.valid">Submit Message</button>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div> -->
+  </section>
+</article>
+<section class="maps py-0">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.1428079446778!2d31.207060515069067!3d30.03276058188651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145841dbdca09375%3A0xc8f0a33432ed7642!2sDigital%20Bond!5e0!3m2!1sen!2seg!4v1667482043776!5m2!1sen!2seg" width="600" height="900" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+<!--Banner End-->
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div *ngIf="loadingSpinner">
+  <app-action-spinner></app-action-spinner>
+</div>
+
+<!--Contact section start-->
+<ng-container *ngIf="!thankyou">
+
+
+  <section class="contact__form">
+    <img src="assets/images/shadow_effect_right.png" class="contact__form--layer">
+    <div class="container">
+
+    <div class="row wow fadeInRight justify-content-center">
+      <div class="col-md-9">
+
+        <h4 class="heading text-center main-title">Let's talk</h4>
+        <div class="row">
+          <div class="col-12">
+            <div class="tracks">
+
+              <div class="track-area">
+
+                  <div class="track-main">
+                      <div class="track">
+                          <div class="step step1 active">
+                              <span class="icon">1</span>
+                              <span class="text">Personal Information   </span>
+                          </div>
+                          <div class="step step2">
+                              <span class="icon">2</span>
+                              <span class="text">Leave message  </span>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+        <form class="mt-4" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)" *ngIf="!formStatus">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group form__input form-group">
+                <input id="name" [ngClass]="{'border-danger': contactForm.controls['name'].touched && contactForm.controls['name'].errors != null}" class="form-control" type="text" formControlName="name" name="name" placeholder="Name">
+
+
+
+                <!-- <div class="input-group-append" *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].errors != null">
+                  <button class="input-group-text" type="button" id="basic-addon2" *ngIf="contactForm.controls['name'].errors['required']" data-toggle="tooltip" title="Name is required">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                  </button>
+                </div> -->
+                <ng-container
+                *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].errors != null">
+
+                <button *ngIf="contactForm.controls['name'].errors['required']" type="button"
+                popover="Name is required" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                <button *ngIf="contactForm.controls['name'].errors['minlength']" type="button"
+                popover="Name must be at least 3 charachters" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                <button *ngIf="contactForm.controls['name'].errors['pattern']" type="button"
+                popover="Name must be charachters only" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+
+                <!-- <button *ngIf="contactForm.controls['name'].errors['minlength']" type="button"
+                popover="Name must be at least 3 charachters" placement="right"
+                class="btn-danger validation" triggers="mouseenter:mouseleave"><i
+                    class="fa fa-exclamation" ></i></button>
+                <button *ngIf="contactForm.controls['name'].errors['pattern']" type="button"
+                popover="Name must be charachters only" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i
+                    class="fa fa-exclamation" ></i></button> -->
+
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group form__input input-group">
+                <!-- <label for="phone">Phone number</label> -->
+                <input id="phone" [ngClass]="{'border-danger': contactForm.controls['phone'].touched && contactForm.controls['phone'].errors != null}" min="1" class="form-control" type="number" placeholder="Phone number" name="phone" formControlName="phone">
+                <ng-container
+                *ngIf="contactForm.controls['phone'].touched && contactForm.controls['phone'].errors != null">
+                  <button
+                  *ngIf="contactForm.controls['phone'].errors['required']"
+                  type="button" popover="Phone is required"
+                placement="right" [outsideClick]="true"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                  <button
+                  *ngIf="contactForm.controls['phone'].errors['pattern']"
+                  type="button" popover="Phone is not valid"
+                placement="right" [outsideClick]="true"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+
+                </ng-container>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="input-group form__input form-group">
+                <!-- <label for="email">Email address</label> -->
+
+                <input type="email" class="form-control" [ngClass]="{'border-danger': contactForm.controls['email'].touched && contactForm.controls['email'].errors != null}" id="email" formControlName='email' name="email" placeholder="Email address">
+
+                <ng-container
+                *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].errors != null">
+
+                <button *ngIf="contactForm.controls['email'].errors['required']" type="button"
+                  popover="Email is required" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                <button *ngIf="contactForm.controls['email'].errors['email']" type="button"
+                  popover="Email is invalid" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+                  <button *ngIf="contactForm.controls['email'].errors['pattern']" type="button"
+                  popover="Email is invalid" placement="right"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+              </ng-container>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group form__input input-group">
+                <!-- <label for="subject">Position</label> -->
+                <input id="subject" class="form-control" type="text" name="subject" formControlName="subject" [ngClass]="{'border-danger': contactForm.controls['subject'].touched && contactForm.controls['subject'].errors != null}" placeholder="Position">
+
+                <button
+                *ngIf="contactForm.controls['subject'].touched && contactForm.controls['subject'].errors != null"
+                type="button" popover="Position is required"
+              placement="right" [outsideClick]="true"
+                class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <button class="btn btn-submit q-25" [disabled]="!contactForm.valid">Next</button>
+            </div>
+
+          </div>
+        </form>
+        <form class="mt-4" [formGroup]="contactFormNext" (ngSubmit)="onSubmitNext(contactFormNext)" *ngIf="formStatus">
+
+          <div class="row">
+
+
+            <div class="col-md-12">
+              <div class="form-group form__input input-group">
+                <!-- <label for="message">Message</label> -->
+                <textarea id="message" class="form-control" [ngClass]="{'border-danger': contactFormNext.controls['message'].touched && contactFormNext.controls['message'].errors != null}" placeholder="Message" type="text" name="message" formControlName="message" rows="6"></textarea >
+
+                  <button
+                  *ngIf="contactFormNext.controls['message'].touched && contactFormNext.controls['message'].errors != null"
+                  type="button" popover="Message is required"
+                placement="right" [outsideClick]="true"
+                  class="btn-danger validation" triggers="mouseenter:mouseleave"><i class="fa fa-exclamation"></i></button>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-submit w-25" [disabled]="!contactFormNext.valid">Submit Message</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+  </section>
+</ng-container>
+
+<!--Contact section end-->
+<ng-container *ngIf="thankyou">
+  <section >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="thankyou_contact">
+            <div class="thankyou_contact_card">
+
+              <span class="text-success message-i"><i class="fa fa-envelope-open fa-3x"></i></span>
+              <h4 >Thank you for contacting us</h4>
+              <span class="message">Your Message Has Been Received And We Will Get In Touch With You Soon!
+              </span>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <button (click)="thankyou = false" class="btn btn-submit" style="width: unset">
+                    <span>Back to home</span>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+              <path fill="#290707" fill-opacity="1" d="M0,224L24,192C48,160,96,96,144,101.3C192,107,240,181,288,197.3C336,213,384,171,432,176C480,181,528,235,576,245.3C624,256,672,224,720,192C768,160,816,128,864,117.3C912,107,960,117,1008,154.7C1056,192,1104,256,1152,256C1200,256,1248,192,1296,138.7C1344,85,1392,43,1416,21.3L1440,0L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

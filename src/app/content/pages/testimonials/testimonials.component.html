@@ -1,0 +1,212 @@
+<!--Banner Start-->
+<section class="page-title review_page--title" *ngFor="let banner of banners" style="background-image: url('https://digitalbondmena.com/banner_images/{{banner.feedback_banner_image}}');">
+      <div class="container">
+          <div class="standalone-content-data">
+              <h2 class="hide-cursor">Reviews</h2>
+              <ul class="page-breadcrumb link">
+                  <li><a routerLink="/"><span class="icon fas fa-home"></span>Home</a></li>
+                  <li><a>Reviews</a></li>
+              </ul>
+          </div>
+      </div>
+
+  </section>
+  <!--Banner End-->
+
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div *ngIf="loadingSpinner">
+  <app-action-spinner></app-action-spinner>
+</div>
+
+
+<!-- section form testominals -->
+
+<ng-container *ngIf="!thankyou">
+  <!--testimonial section start-->
+  <section class="testimonial-page" style="background-image: url('assets/images/BG/1.jpg');">
+    <div class="container">
+        <div class="testimonial-area">
+            <div class="row">
+                <div class="col-12">
+                    <div class="testimonial-title">
+                        <h1 class="heading">SATISFIED <span>Clients</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="testimonial-carousel">
+                        <owl-carousel-o [options]="testimonials" class="testimonial-box testimonial-page-slider">
+
+                            <ng-template *ngFor="let review of reviews" carouselSlide>
+                              <div class="item">
+                                <div class="item-body">
+
+                                  <div class="icon-holder">
+                                    <i class="fas fa-quote-right"></i>
+                                  </div>
+                                  <p class="text">
+                                    {{review.en_feedback}}
+                                  </p>
+                                  <div class="d-flex align-items-center py-3">
+                                    <!-- <div class="media align-items-center">
+                                      <img src="assets/img/team/team-4.jpg" alt="team" class="avatar avatar-sm mr-3">
+                                      <div class="media-body">
+                                        <h6 class="mb-0">Kyan Boards</h6>
+                                        <small>CEO, ThemeTags</small>
+                                      </div>
+                                    </div> -->
+                                    <div class="img-holder">
+                                      <img [src]="reviewImage+review.image">
+                                    </div>
+                                    <h4 class="user-name">{{review.en_name}}</h4>
+                                  </div>
+                                  </div>
+                                </div>
+                            </ng-template>
+                        </owl-carousel-o>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </section>
+  <!--testimonial section end-->
+
+  <section class=" bg-gray review_section" style="background-image: url('assets/images/BG/2.jpg');">
+    <div class="container">
+      <h2>Send a Review
+      </h2>
+      <form [formGroup]="testimonialForm" (ngSubmit)="onSubmit(testimonialForm)">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group form-group">
+              <label for="name">Name</label>
+              <input id="name" class="form-control" type="text" formControlName="name" name="name">
+              <!-- <div class="input-group-append" *ngIf="testimonialForm.controls['name'].touched && testimonialForm.controls['name'].errors != null">
+                <button type="button" class="btn btn-secondary input-group-text" data-toggle="tooltip" *ngIf="testimonialForm.controls['name'].errors['required']" data-placement="right" title="name is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div> -->
+              <div class="input-group-append" *ngIf="testimonialForm.controls['name'].touched && testimonialForm.controls['name'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="testimonialForm.controls['name'].errors['required']" data-toggle="tooltip" title="Name is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+              <!-- <div *ngIf="testimonialForm.controls['name'].touched && testimonialForm.controls['name'].errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                <p class="mb-0" *ngIf="testimonialForm.controls['name'].errors['required']">Name is required</p>
+              </div> -->
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group input-group">
+              <label for="phone">Phone number</label>
+              <input id="phone" min="1" class="form-control" type="number" name="phone" formControlName="phone">
+              <!-- <div *ngIf="testimonialForm.controls['phone'].touched && testimonialForm.controls['phone'].errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                <p class="mb-0" *ngIf="testimonialForm.controls['phone'].errors['required']">Phone is required</p>
+                <p class="mb-0" *ngIf="testimonialForm.controls['phone'].errors['pattern']">Enter phone number</p>
+              </div> -->
+              <div class="input-group-append" *ngIf="testimonialForm.controls['phone'].touched && testimonialForm.controls['phone'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="testimonialForm.controls['phone'].errors['required']" data-toggle="tooltip" title="Phone is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="testimonialForm.controls['phone'].errors['pattern']" data-toggle="tooltip" title="Phone is minimum 11 digits">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group form-group">
+              <label for="email">Email address</label>
+
+              <input type="email" class="form-control" id="email" formControlName='email' name="email">
+              <!-- <div *ngIf="testimonialForm.controls['email'].touched && testimonialForm.controls['email'].errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                <p class="mb-0" *ngIf="testimonialForm.controls['email'].errors['required']">Email is required</p>
+                <p class="mb-0" *ngIf="testimonialForm.controls['email'].errors['email']">Email is invalid</p>
+              </div> -->
+              <div class="input-group-append" *ngIf="testimonialForm.controls['email'].touched && testimonialForm.controls['email'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="testimonialForm.controls['email'].errors['required']" data-toggle="tooltip" title="Email is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="testimonialForm.controls['email'].errors['email']" data-toggle="tooltip" title="Email is invalid">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group input-group">
+              <label for="subject">Job title</label>
+              <input id="subject" class="form-control" type="text" name="job_title" formControlName="job_title">
+              <!-- <div *ngIf="testimonialForm.controls['subject'].touched && testimonialForm.controls['subject'].errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                <p class="mb-0" *ngIf="testimonialForm.controls['subject'].errors['required']">Position is required</p>
+              </div> -->
+              <div class="input-group-append" *ngIf="testimonialForm.controls['job_title'].touched && testimonialForm.controls['job_title'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="testimonialForm.controls['job_title'].errors['required']" data-toggle="tooltip" title="Job title is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group input-group">
+              <label for="message">message</label>
+              <textarea id="message" class="form-control" type="text" name="message" formControlName="message" rows="6"></textarea>
+              <!-- <div *ngIf="testimonialForm.controls['message'].touched && testimonialForm.controls['message'].errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                <p class="mb-0" *ngIf="testimonialForm.controls['message'].errors['required']">Message is required</p>
+              </div> -->
+              <div class="input-group-append" *ngIf="testimonialForm.controls['message'].touched && testimonialForm.controls['message'].errors != null">
+                <button class="input-group-text" type="button" id="basic-addon2" *ngIf="testimonialForm.controls['message'].errors['required']" data-toggle="tooltip" title="Message is required">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-light" [disabled]="!testimonialForm.valid">Submit review</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </section>
+</ng-container>
+<ng-container *ngIf="thankyou">
+  <section>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+
+          <div class="thankyou_review">
+            <div class="thankyou_review_card">
+
+              <span class="text-success message-i"><i class="fa fa-star fa-3x"></i></span>
+              <h4 >Thank you for Reviewing us</h4>
+              <span class="message">We are happy to get in touch with you. Your review has been received!</span>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <a routerLink="/" class="btn btn-primary">
+                    <span>Back to home</span>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+              <path fill="#290707" fill-opacity="1" d="M0,224L24,192C48,160,96,96,144,101.3C192,107,240,181,288,197.3C336,213,384,171,432,176C480,181,528,235,576,245.3C624,256,672,224,720,192C768,160,816,128,864,117.3C912,107,960,117,1008,154.7C1056,192,1104,256,1152,256C1200,256,1248,192,1296,138.7C1344,85,1392,43,1416,21.3L1440,0L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

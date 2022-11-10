@@ -1,0 +1,186 @@
+<!--Banner Start-->
+<!-- <section class="page-title page-title-casestudy-details" >
+  <!-- <div class="container">
+    <div class="standalone-content-data">
+      <h2 class="hide-cursor">{{caseStudy?.en_title}}</h2>
+      <ul class="page-breadcrumb link">
+        <li>
+          <a routerLink="/home"><span class="icon fas fa-home"></span>Home</a>
+        </li>
+        <li><a>{{caseStudy?.en_title}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-title-casestudy-details-cover">
+    <img [src]="caseStudyLogo+caseStudy?.banner_image" alt="">
+    <div class="image_placeholder shadow-sm rounded-circle w-120px">
+      <img [src]="caseStudyLogo+caseStudy?.image" alt="{{caseStudy?.en_title}} logo" class="img-fluid ">
+    </div>
+  </div>
+  <div class="container">
+
+    <div class="cover-body">
+      <h2>
+        {{caseStudy?.en_title}}
+      </h2>
+      <p>
+        {{caseStudy?.en_text}}
+      </p>
+    </div>
+  </div>
+</section> -->
+<!--Banner Start-->
+<article>
+
+  <section sy class="page-title contact_page--title" style="background-image:url('assets/images/career_banner.png');">
+    <div class="container">
+      <div class="standalone-content-data">
+        <h2 class="hide-cursor">{{caseStudy?.en_title}}</h2>
+        <ul class="page-breadcrumb link">
+          <li>
+            <a routerLink="/">Home</a>
+          </li>
+          <li><a>{{caseStudy?.en_title}}</a></li>
+        </ul>
+      </div>
+    </div>
+      <div class="image_placeholder shadow-sm">
+        <img [src]="caseStudyLogo+caseStudy?.image" alt="{{caseStudy?.en_title}} logo" class="img-fluid ">
+      </div>
+
+  </section>
+  <section class="case_studies_details">
+
+      <div class="row align-items-center" >
+
+        <div class="col-lg-8  position-relative pt-5">
+          <img src="assets/images/shadow_effect_right.png" alt="" class="case_studies_details--layer">
+          <img src="assets/images/two_face_icon.png" class="case_studies_details--triangle" alt="">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+          <h3>
+
+            {{caseStudy?.en_title}}
+          </h3>
+          <p>
+            {{caseStudy?.en_text}}
+          </p>
+          </div>
+          </div>
+        </div>
+        <div class="col-lg-4 text-right">
+
+          <img src="assets/images/zisushi_cover.png" alt="" class="case_study_details--img">
+        </div>
+      </div>
+
+  </section>
+</article>
+<!--Banner End-->
+<!--Banner End-->
+<div *ngIf="loading">
+<app-loader></app-loader>
+</div>
+
+<article *ngFor="let caseStudyModel of caseStudyModels; let first=first; let last=last; let index=index"  >
+
+    <section class="case_studies_details">
+        <div *ngIf="index % 2 === 0" class="row align-items-center justify-content-center">
+
+
+          <div  class="col-lg-4  caseStudyslider px-0">
+            <!-- <img src="assets/images/mobile.png" class="caseStudyslider_pic" alt=""> -->
+
+            <owl-carousel-o [options]="caseStudiesSlider" class="client-team caseStudyslider_app_slider h-100">
+
+              <ng-template *ngFor="let caseStudyGallery of caseStudyModel.case_study_model_images" carouselSlide class="wow fadeInUp">
+                <div class="case_studies_details_slider">
+
+                  <img [src]="caseStudyImage+caseStudyGallery.image" class="caseStudyslider_app_slider_pic" alt="" />
+                </div>
+              </ng-template>
+
+            </owl-carousel-o>
+          </div>
+          <div class="col-lg-8 case_studies_details_caption">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <h2 *ngIf="index === 0">
+                  We Offer <br> Digital Solutions
+                </h2>
+                <h3>
+
+                  {{caseStudyModel.en_title}}
+                </h3>
+                <p>
+                  {{caseStudyModel.en_text}}
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="index % 2 !== 0" [ngClass]="{'text-right': index % 2 !== 0}" class="row align-items-center ">
+
+          <div class="col-lg-8 case_studies_details_caption">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+
+            <h3>
+
+              {{caseStudyModel.en_title}}
+            </h3>
+            <p>
+              {{caseStudyModel.en_text}}
+            </p>
+            </div>
+            </div>
+          </div>
+          <div  class="col-lg-4  caseStudyslider px-0">
+            <!-- <img src="assets/images/mobile.png" class="caseStudyslider_pic" alt=""> -->
+
+            <owl-carousel-o [options]="caseStudiesSlider" class="client-team caseStudyslider_app_slider">
+
+              <ng-template *ngFor="let caseStudyGallery of caseStudyModel.case_study_model_images" carouselSlide class="wow fadeInUp">
+                <div class="case_studies_details_slider">
+
+                  <img [src]="caseStudyImage+caseStudyGallery.image" class="caseStudyslider_app_slider_pic" alt="" />
+                </div>
+              </ng-template>
+
+            </owl-carousel-o>
+          </div>
+
+        </div>
+    </section>
+
+</article>
+<section class="case_studies other_case_studies" style="clip-path: unset;">
+  <div class="container">
+    <div class="row">
+      <!--Column item-->
+      <div class="col-12 text-center">
+        <h4 class="section-header main-title">Other creative projects</h4>
+      </div>
+    </div>
+    <owl-carousel-o [options]="otherCaseStudiesSlider">
+
+      <ng-container *ngFor="let caseStudy of caseStudies" >
+
+        <ng-template carouselSlide>
+
+          <a [routerLink]="['/clients/',caseStudy.id]" class="card custom-shadow case_study_card">
+
+            <img [src]="caseStudyLogo+caseStudy.image" alt="" />
+            <div class="card-body">
+              <h4>{{caseStudy.en_title}}</h4>
+            </div>
+          </a>
+
+        </ng-template>
+
+      </ng-container>
+
+    </owl-carousel-o>
+  </div>
+</section>

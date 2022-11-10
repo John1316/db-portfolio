@@ -1,0 +1,61 @@
+<!--Banner Start-->
+<section class="page-title sayhello_page--title" *ngFor="let banner of banners" style="background-image: url('https://digitalbondmena.com/banner_images/{{banner.say_hello_banner_image}}');">
+  <div class="container">
+    <div class="standalone-content-data">
+      <h2 class="hide-cursor">Say hello</h2>
+      <ul class="page-breadcrumb link">
+        <li>
+          <a routerLink="/home"><span class="icon fas fa-home"></span>Home</a>
+        </li>
+        <li><a>Say hello</a></li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+<!--Banner End-->
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<section class="say-hello" style="background-image: url('assets/images/BG/1.jpg');">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="card mb-4">
+          <img src="assets/images/Contactus.jpg" alt="">
+          <div class="card-body card-info">
+            <h4 class="main-title">Contact us</h4>
+          </div>
+          <div class="card-body card-overlay">
+            <p>
+              While we're your perfect solution for Digital, there are simpler ways for us to get in touch and answer your questions.
+            </p>
+            <a class="btn btn-primary" routerLink="/contact">Contact us
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="divider"></div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card">
+          <img src="assets/images/Review.jpg" alt="">
+
+          <div class="card-body card-info">
+            <h4 class="main-title">Leave a Review
+            </h4>
+          </div>
+          <div class="card-body card-overlay">
+            <p>
+              Your words matter and help us best serve you and others. Let's write about your experience!
+
+              </p>
+            <a class="btn btn-primary" routerLink="/review">Leave a Review
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

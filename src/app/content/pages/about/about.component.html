@@ -1,0 +1,171 @@
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<!--Banner Start-->
+<!-- <section class="page-title" style="background-image: url(https://digitalbondmena.com/about_us_page/{{aboutUs?.about_banner_image}});"> -->
+<!--Banner Start-->
+<section class="page-title services_page--title" style="background-image: url('{{aboutUsPage+aboutUs?.about_banner_image}}');">
+  <div class="container">
+
+    <div class="standalone-content-data">
+      <h2 class="hide-cursor">About us</h2>
+      <ul class="page-breadcrumb link">
+        <li>
+          <a routerLink="/">Home</a>
+        </li>
+        <li><a>About us</a></li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+<!--Banner End-->
+
+<section class="about_us" >
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-12 text-center">
+        <h2 class="about_us--title">
+          Our Story
+
+        </h2>
+      </div>
+      <div class="col-lg-9">
+      <h4 class="about_us--h4" data-depth="0.1">
+        {{aboutUs?.en_about_section_title}}
+      </h4>
+      <p class="about_us--p">
+        {{aboutUs?.en_about_section_text}}
+      </p>
+      </div>
+    </div>
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-5 d-flex about_us--vision">
+          <div class="icon">
+            <img src="assets/images/vision.png" alt="">
+          </div>
+
+          <div class="content">
+
+
+            <h3>
+              Vision
+            </h3>
+
+
+            <p>
+              {{aboutUs?.en_vision_text}}
+            </p>
+          </div>
+
+        </div>
+        <div class="col-md-5 d-flex about_us--vision">
+          <div class="icon">
+            <img src="assets/images/mission.png" alt="">
+          </div>
+          <div class="content">
+
+            <h3>
+              Mission
+            </h3>
+
+            <p>
+              {{aboutUs?.en_mission_text}}
+            </p>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!--team section start-->
+<section class="client-section clients bg-dark-gray" id="client-section">
+  <!-- <svg class="separator__svg" id="client-header-svg" width="100%" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#fff" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 100 100 V 10 L 0 100"/>
+      <path d="M 30 73 L 100 18 V 10 Z" fill="#fff" stroke-width="0"/>
+  </svg> -->
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-12 wow fadeInUp text-center  text-lg-left clients__header" data-depth="0.1"
+        data-wow-delay="300ms">
+        <h1 class="main-title text-center">Happy clients</h1>
+        <img src="assets/images/two_face_icon.png" class="clients__triangle" alt="">
+        <img src="assets/images/half_circle_icon.png" class="clients__circle" alt="">
+      </div>
+    </div>
+    <div class="col-12 col-lg-12 client-member-area">
+      <owl-carousel-o [options]="portfolio" class="client-team">
+        <ng-container *ngFor="let studyCase of clients" class="wow fadeInUp">
+          <ng-template carouselSlide *ngIf="studyCase.type === 'case'">
+
+            <div class="item text-center">
+              <div class="image-holder">
+                <img [src]="studyCaseImage+studyCase.logo" alt="team1" />
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+
+</section>
+<!--team section start-->
+
+
+
+<!--testimonial section start-->
+<section class="testimonials__section testimonial-sec padding-top position-relative" id="testimonial-sec">
+  <div class="container">
+    <div class="testimonial-area">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="testimonial-title main-title text-center">Read From Bonders
+          </h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <div class="testimonial-carousel">
+            <img src="assets/images/close_icon.png" alt="" class="testimonials__close--icon">
+
+            <owl-carousel-o [options]="testimonials" class="testimonial-box">
+              <ng-container *ngFor="let review of reviews">
+                <ng-template carouselSlide>
+
+                  <div *ngIf="review.status === 1" class="item text-center">
+                    <div class="row justify-content-center">
+                      <div class="col-2">
+                        <div class="icon-holder">
+                          <i class="fas fa-quote-right"></i>
+                        </div>
+
+                      </div>
+                      <div class="col-8">
+
+                        <p class="text">
+                          {{review.en_feedback | slice:0:130}}
+                        </p>
+                        <div class="users mt-4">
+                          <h3 class="user-name fw-600">{{review.en_name}}</h3>
+                          <p class="fw-500">{{review.en_role}}</p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+
+              </ng-container>
+            </owl-carousel-o>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="assets/images/two_face_icon.png" alt="" class="testimonials__triangle--icon">
+  </div>
+
+</section>
+<!--testimonial section end-->

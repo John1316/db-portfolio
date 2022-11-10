@@ -1,0 +1,19 @@
+<div *ngIf="onlineStatus === 'online'" class="online row">
+  <div class="col-10">
+    <h5 class="mb-0">{{onlineStatusMessage}}</h5>
+
+  </div>
+  <div class="col-2">
+    <img class="w-100" src="assets/images/internet_restored.png" alt="">
+  </div>
+</div>
+
+<div *ngIf="onlineStatus === 'offline'" class="offline row">
+  <div class="col-10">
+    <h5 class="mb-0">{{onlineStatusMessage}}</h5>
+
+  </div>
+  <div class="col-2">
+    <img class="w-100" src="assets/images/no_internet.png" alt="">
+  </div>
+</div>

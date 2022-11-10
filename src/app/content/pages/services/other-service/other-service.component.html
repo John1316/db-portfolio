@@ -1,0 +1,68 @@
+<!--Banner Start-->
+<!-- <section class="page-title services_details--title" style="background-image: url('https://digitalbondmena.com/banner_images/{{bannerImage?.services_detail_banner_image}}');" *ngFor="let service of serviceDetails"> -->
+<section class="page-title services_details--title">
+  <img [src]="serviceBannerImage+bannerImage?.services_detail_banner_image" class="page-title_img"  alt="">
+  <div class="container">
+    <div class="standalone-content-data">
+      <h2 class="hide-cursor">{{ serviceDetail?.en_title }}</h2>
+      <ul class="page-breadcrumb link">
+        <li>
+          <a routerLink="/home"><span class="icon fas fa-home"></span>Home</a>
+        </li>
+        <li><a>{{ serviceDetail?.en_title }}</a></li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+<!--Banner End-->
+
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<section>
+  <div class="container">
+    <div class="row align-items-center" >
+      <div class="col-md-4">
+        <img [src]="serviceImage+serviceDetail?.image" class="w-100" alt="">
+      </div>
+      <div class="col-md-8">
+        <h4 class="section_heading_single main-title">{{serviceDetail?.en_title}}</h4>
+        <p>{{serviceDetail?.en_text}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <div class="row">
+      <!--Column item-->
+      <div class="col-12 text-center">
+        <h1 class="section-header main-title">Other Services</h1>
+      </div>
+    </div>
+    <owl-carousel-o [options]="servicesSlider">
+
+      <ng-template *ngFor="let otherService of otherServicesArray" carouselSlide>
+
+        <div class="card">
+          <div class="card-content">
+            <h2>{{otherService.en_title | slice:0:30}}</h2>
+            <p>
+              {{
+                otherService.en_text | slice: 0:130
+              }}
+            </p>
+            <a routerLink="/services/{{ otherService.id }}" class="btn">Discover more</a>
+          </div>
+          <div class="card-img right">
+            <img class="" [src]="serviceImage+otherService.image" alt="" />
+          </div>
+        </div>
+      </ng-template>
+
+    </owl-carousel-o>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "sayhello.component.scss"
+    ],
+    "names": [],
+    "file": "sayhello.component.css"
+}

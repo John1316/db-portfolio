@@ -1,0 +1,174 @@
+<!--Banner Start-->
+<section class="page-title services_page--title" style="background-image: url('assets/images/services_banner.png');">
+  <div class="container">
+    <div class="standalone-content-data">
+      <h2 class="hide-cursor text-white">Services</h2>
+      <ul class="page-breadcrumb link">
+        <li><a routerLink="/">Home</a></li>
+        <li><a>Services</a></li>
+    </ul>
+    </div>
+  </div>
+
+</section>
+<!--Banner End-->
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<section class="services-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!--Column item-->
+      <div class="col-12 text-center">
+        <h1 class="main-title">Services</h1>
+      </div>
+      <div class="col-md-8">
+        <div class="row ">
+          <div *ngFor="let service of services"  class="col-md-6 wow animated fadeInUp">
+            <div class="card services__card">
+              <img class="services__card--img mx-auto" [src]="serviceImage+service.icon">
+              <div class="card-body">
+
+                <h2 class="services__card--h2" [title]="service.en_title">{{service.en_title }}</h2>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="why__service--section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!--Column item-->
+      <div class="col-12 text-center">
+        <h1 class="section-header main-title">WHY DIGITAL BOND?</h1>
+      </div>
+
+          <div class="col-md-4 wow animated fadeInUp mb-4">
+            <div class="card why__service--card h-100">
+              <div class="why__service--header ">1</div>
+              <div class="card-body">
+
+                <p class="why__service--p">It’s our attention to the small stuff, scheduling of timelines and keen project management that makes us stand out from the rest.</p>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4 wow animated fadeInUp mb-4">
+            <div class="card why__service--card h-100">
+              <div class="why__service--header">2</div>
+              <div class="card-body">
+
+                <p class="why__service--p">We bring our diverse background of advertising, design, branding, public relations, research and strategic planning to work for your company.
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4 wow animated fadeInUp mb-4">
+            <div class="card why__service--card h-100">
+              <div class="why__service--header">3</div>
+              <div class="card-body">
+
+                <p class="why__service--p">Our prices are competitive and fair. There are no surprise bills. Any unexpected or additional expenses must be pre-approved by you.
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4 wow animated fadeInUp mb-4">
+            <div class="card why__service--card h-100">
+              <div class="why__service--header">4</div>
+              <div class="card-body">
+
+                <p class="why__service--p">We’ve worked with a range of top businesses in Egypt and abroad.
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4 wow animated fadeInUp mb-4">
+            <div class="card why__service--card h-100">
+              <div class="why__service--header">5</div>
+              <div class="card-body">
+
+                <p class="why__service--p">Your account manager will always be on hand to discuss your questions and concerns.
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4 wow animated fadeInUp mb-4">
+            <div class="card why__service--card h-100">
+              <div class="why__service--header">6</div>
+              <div class="card-body">
+
+                <p class="why__service--p">Nothing gives us greater pride than seeing our clients delighted with the work we’ve done together.
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+
+
+    </div>
+  </div>
+</section>
+<section class="join__us--section">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-8">
+        <h1 class="join__us--h1">We're Always Looking
+          for talented Like You!</h1>
+      </div>
+      <div class="col-md-2">
+        <a routerLink="/careers" class="btn join__us--link">Join Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!--team section start-->
+<section class="client-section"  id="client-section">
+  <!-- <svg class="separator__svg" id="client-header-svg" width="100%" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#fff" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 100 100 V 10 L 0 100"/>
+      <path d="M 30 73 L 100 18 V 10 Z" fill="#fff" stroke-width="0"/>
+  </svg> -->
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-12 wow fadeInUp text-center client_header" data-depth="0.1"
+        data-wow-delay="300ms">
+        <h1 class="main-title">Happy clients
+
+        </h1>
+      </div>
+      <div class="col-12 col-lg-12 client-member-area">
+        <owl-carousel-o [options]="portfolio" class="client-team">
+          <ng-container *ngFor="let clients of clients" class="wow fadeInUp">
+            <ng-template carouselSlide *ngIf="clients.type === 'case'">
+
+              <div class="item text-center">
+                <div class="image-holder">
+                  <img [src]="studyCaseImage+clients.logo" alt="team1" />
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!--team section start-->
